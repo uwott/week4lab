@@ -55,13 +55,13 @@ jobs:
       - checkout
       - install_deps
       - run:
-        name: Run integration tests
-        command: |
-          mkdir -p test-output
-          npm run integration-tests
+          name: Run integration tests
+          command: |
+            mkdir -p test-output
+            npm run integration-tests
         
       - store_test_results:
-        path: test-output
+          path: test-output
   
   sast:
     docker:
