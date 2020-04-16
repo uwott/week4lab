@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="2" failures="1" time="1.291">
+  <testsuite name="Post endpoint" errors="0" failures="1" skipped="0" timestamp="2020-04-16T14:52:49" time="1.216" tests="2">
+    <testcase classname="Post endpoint should create new task" name="Post endpoint should create new task" time="0.037">
+      <failure>Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (net.js:1296:21)
+    at listenInCluster (net.js:1361:12)
+    at Server.listen (net.js:1449:7)
+    at Function.listen (/home/sdouser/week4lab/tutorial/node_modules/express/lib/application.js:618:24)
+    at Object.&lt;anonymous&gt; (/home/sdouser/week4lab/tutorial/app.js:46:5)
+    at Runtime._execModule (/home/sdouser/week4lab/tutorial/node_modules/jest-runtime/build/index.js:1034:22)
+    at Runtime._loadModule (/home/sdouser/week4lab/tutorial/node_modules/jest-runtime/build/index.js:678:12)
+    at Runtime.requireModule (/home/sdouser/week4lab/tutorial/node_modules/jest-runtime/build/index.js:536:10)
+    at Runtime.require [as requireModuleOrMock] (/home/sdouser/week4lab/tutorial/node_modules/jest-runtime/build/index.js:699:21)
+    at Object.&lt;anonymous&gt; (/home/sdouser/week4lab/tutorial/tests/integration/api.test.js:3:13)</failure>
+    </testcase>
+    <testcase classname="Post endpoint should return error when invalid name" name="Post endpoint should return error when invalid name" time="0.115">
+    </testcase>
+  </testsuite>
+</testsuites>

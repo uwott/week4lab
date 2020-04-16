@@ -30,6 +30,49 @@ jobs:
       - install_deps
       - store_artifacts:
           path: ./
+  
+  integration-test:
+    docker:
+      - image: circle/node:lts
+      - image: mono:4.0
+    environment:
+      APP_PORT: 4000
+      JEST_JUNIT_OUTPUT_DIR: test-ouput
+    steps:
+      -checkout
+      -install_deps
+      -run:
+        name: Run integration tests
+        command: |
+          mkdir -p test-output
+          npm run integration-tests
+        
+      - store_test_results:
+        path: test-output
+  
+  sast:
+    docker:
+      -image: circleci/node:lts
+    steps:
+      - checkout
+      - run:
+        name: Install NodeJsScan
+        command: |
+          sudo apt update
+          sudo apt install python3-pip
+          pip3 install nodejsscan
+      - run: 
+        name: Run NodeJsScan
+        command: |
+          nodejsscan -d ./ -o sast-output.json
+      - store_artifacts:
+          path: sast-output.json
+      -run:
+          name: Parse sast report
+          command: |
+            # exit with a non-zero exit code if there are any security issues 
+            exit $(cat sast-output.json | jq .total_count.sec)
+
 
 workflows:
   build-and-packge:
