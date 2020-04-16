@@ -39,9 +39,9 @@ jobs:
       APP_PORT: 4000
       JEST_JUNIT_OUTPUT_DIR: test-ouput
     steps:
-      -checkout
-      -install_deps
-      -run:
+      - checkout
+      - install_deps
+      - run:
         name: Run integration tests
         command: |
           mkdir -p test-output
