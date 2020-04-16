@@ -17,9 +17,22 @@ jobs:
       - checkout 
       - install_deps
       - run:
-          name: run tests
+          name: Run lint
+          command: npm run lint
+      - run:
+          name: Run unit tests
           command: |
+            mkdir -p test-output
             npm run unit-tests
+            
+      - run:
+          name: Validate Coverage
+          command: |
+            bash <(curl -s https://codecov.io/bash)
+
+      - store_test_results:
+          path: test-output
+
   pack:
     docker:
       - image: circleci/node:lts
@@ -56,11 +69,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Install NodeJsScan
-        command: |
-          sudo apt update
-          sudo apt install python3-pip
-          pip3 install nodejsscan
+          name: Install NodeJsScan
+          command: |
+            sudo apt update
+            sudo apt install python3-pip
+            pip3 install nodejsscan
       - run: 
         name: Run NodeJsScan
         command: |
