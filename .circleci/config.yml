@@ -67,7 +67,7 @@ jobs:
           nodejsscan -d ./ -o sast-output.json
       - store_artifacts:
           path: sast-output.json
-      -run:
+      - run:
           name: Parse sast report
           command: |
             # exit with a non-zero exit code if there are any security issues 
