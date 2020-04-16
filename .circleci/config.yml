@@ -52,7 +52,7 @@ jobs:
   
   sast:
     docker:
-      -image: circleci/node:lts
+      - image: circleci/node:lts
     steps:
       - checkout
       - run:
