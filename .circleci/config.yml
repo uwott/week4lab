@@ -11,6 +11,8 @@ jobs:
   ci-build:
     docker:
       - image: circleci/node:lts
+    enviroment:
+      JEST_JUNIT_OUTPUT_DIR: test-output
     steps:
       - checkout 
       - install_deps
